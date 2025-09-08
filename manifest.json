@@ -1,0 +1,11 @@
+{
+  "name": "41 Labs",
+  "short_name": "41 Labs",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#111319",
+  "theme_color": "#111319",
+  "icons": [
+    {"src": "/assets/icon.svg", "sizes": "any", "type": "image/svg+xml"}
+  ]
+}

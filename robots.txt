@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://41-labs.com/sitemap.xml

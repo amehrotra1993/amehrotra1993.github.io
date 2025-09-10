@@ -9,13 +9,7 @@
   --spacing: 1rem;
   --radius: 6px;
   --transition: 0.3s ease;
-}
-
-[data-theme="light"] {
-  --color-bg: #f5f6f8;
-  --color-surface: #ffffff;
-  --color-text: #111319;
-  --color-link: #0055ff;
+  --notice-height: 0px;
 }
 
 /* ====== Base ====== */
@@ -25,7 +19,7 @@ html {
 
 body {
   margin: 0;
-  font-family: system-ui, sans-serif;
+  font-family: 'Inter', system-ui, sans-serif;
   background: var(--color-bg);
   color: var(--color-text);
   line-height: 1.6;
@@ -56,7 +50,7 @@ p, li {font-size: 1rem;}
 /* ====== Header & Nav ====== */
 .site-header {
   position: sticky;
-  top: 0;
+  top: var(--notice-height);
   background: var(--color-bg);
   z-index: 1000;
   border-bottom: 1px solid rgba(255,255,255,0.05);
@@ -70,7 +64,7 @@ p, li {font-size: 1rem;}
   gap: var(--spacing);
 }
 .nav-menu a {color: var(--color-text); text-decoration: none;}
-.nav-menu a:hover, .nav-menu a:focus {color: var(--color-link);} 
+.nav-menu a:hover, .nav-menu a:focus {color: var(--color-link);}
 
 .nav-toggle {
   background: none;
@@ -91,8 +85,18 @@ p, li {font-size: 1rem;}
   .nav-menu.open {max-height:15rem;}
 }
 
-.theme-toggle {background:none; border:none; color:var(--color-text); font-size:1.2rem; cursor:pointer;}
-.theme-toggle:focus {outline: 2px solid var(--color-link);}
+
+/* Site notice */
+.site-notice {
+  background: var(--color-accent);
+  color: #111319;
+  text-align: center;
+  padding: 0.5rem;
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  z-index: 1100;
+}
 
 /* ====== Hero ====== */
 .hero {
@@ -121,7 +125,8 @@ p, li {font-size: 1rem;}
 /* ====== Sections ====== */
 .section {padding:4rem 0;}
 .card-grid {display:grid; gap:1.5rem; grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));}
-.card {background:var(--color-surface); padding:1.5rem; border-radius:var(--radius); box-shadow:0 0 0 1px rgba(0,0,0,0.2);}
+.card {background:var(--color-surface); padding:1.5rem; border-radius:var(--radius); box-shadow:0 0 0 1px rgba(0,0,0,0.2); transition:transform var(--transition), box-shadow var(--transition);}
+.card:hover, .card:focus-within {transform:translateY(-4px); box-shadow:0 4px 10px rgba(0,0,0,0.3);}
 .card-icon {width:40px; height:40px;}
 
 .pillars {display:grid; grid-template-columns:repeat(auto-fit,minmax(10rem,1fr)); gap:0.5rem; list-style:none; padding:0;}
@@ -129,11 +134,6 @@ p, li {font-size: 1rem;}
 
 /* ====== Investors ====== */
 .investors ul {list-style:disc; padding-left:1.5rem;}
-
-/* ====== Contact ====== */
-form {display:grid; gap:1rem; max-width:35rem;}
-input, select, textarea {width:100%; padding:0.5rem; border-radius:var(--radius); border:1px solid #444; background:var(--color-bg); color:var(--color-text);}
-input:focus, select:focus, textarea:focus {outline:2px solid var(--color-link);}
 
 /* ====== Footer ====== */
 .site-footer {background:var(--color-surface); text-align:center;}

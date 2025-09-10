@@ -1,24 +1,7 @@
 // 41 Labs scripts
 (function(){
-  const root = document.documentElement;
-  const themeToggle = document.getElementById('theme-toggle');
   const navToggle = document.querySelector('.nav-toggle');
   const navMenu = document.getElementById('nav-menu');
-  const contactForm = document.getElementById('contact-form');
-  const formStatus = document.getElementById('form-status');
-
-  // Theme handling
-  function setTheme(mode){
-    root.setAttribute('data-theme', mode);
-    localStorage.setItem('theme', mode);
-  }
-  const savedTheme = localStorage.getItem('theme');
-  const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
-  setTheme(savedTheme || (prefersLight ? 'light' : 'dark'));
-  themeToggle.addEventListener('click', () => {
-    const current = root.getAttribute('data-theme');
-    setTheme(current === 'dark' ? 'light' : 'dark');
-  });
 
   // Mobile nav
   navToggle.addEventListener('click', () => {
@@ -60,34 +43,6 @@
     });
   });
 
-  // Contact form
-  contactForm.addEventListener('submit', async e => {
-    e.preventDefault();
-    formStatus.textContent = '';
-    if(!contactForm.reportValidity()) return;
-    const endpoint = contactForm.getAttribute('action');
-    if(endpoint.includes('your-id')){
-      formStatus.textContent = 'Form endpoint not configured. Please email us.';
-      formStatus.style.color = '#F4A300';
-      return;
-    }
-    try {
-      const res = await fetch(endpoint, {
-        method: 'POST',
-        body: new FormData(contactForm),
-        headers: { 'Accept':'application/json' }
-      });
-      if(res.ok){
-        formStatus.textContent = 'Thanks! We will be in touch.';
-        contactForm.reset();
-      } else {
-        formStatus.textContent = 'Submission failed. Please email us.';
-      }
-    } catch(err){
-      formStatus.textContent = 'Network error. Please try again later.';
-    }
-  });
-
   // Fade-in observer
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -102,4 +57,13 @@
   // Year in footer
   const year = document.getElementById('year');
   if(year) year.textContent = new Date().getFullYear();
+
+  const noticeDate = document.getElementById('notice-date');
+  if(noticeDate){
+    const now = new Date();
+    const month = now.toLocaleString('default', {month: 'long'});
+    noticeDate.textContent = `${month} ${now.getFullYear()}`;
+    const notice = noticeDate.parentElement;
+    document.documentElement.style.setProperty('--notice-height', notice.offsetHeight + 'px');
+  }
 })();

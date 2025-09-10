@@ -9,6 +9,7 @@
   --spacing: 1rem;
   --radius: 6px;
   --transition: 0.3s ease;
+ main
 }
 
 /* ====== Base ====== */
@@ -49,7 +50,7 @@ p, li {font-size: 1rem;}
 /* ====== Header & Nav ====== */
 .site-header {
   position: sticky;
-  top: 0;
+  top: var(--notice-height);
   background: var(--color-bg);
   z-index: 1000;
   border-bottom: 1px solid rgba(255,255,255,0.05);
@@ -92,6 +93,11 @@ p, li {font-size: 1rem;}
   text-align: center;
   padding: 0.5rem;
   font-weight: 600;
+
+  position: sticky;
+  top: 0;
+  z-index: 1100;
+ main
 }
 
 /* ====== Hero ====== */

@@ -57,4 +57,13 @@
   // Year in footer
   const year = document.getElementById('year');
   if(year) year.textContent = new Date().getFullYear();
+
+  const noticeDate = document.getElementById('notice-date');
+  if(noticeDate){
+    const now = new Date();
+    const month = now.toLocaleString('default', {month: 'long'});
+    noticeDate.textContent = `${month} ${now.getFullYear()}`;
+    const notice = noticeDate.parentElement;
+    document.documentElement.style.setProperty('--notice-height', notice.offsetHeight + 'px');
+  }
 })();

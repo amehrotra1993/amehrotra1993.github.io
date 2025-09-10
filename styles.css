@@ -9,7 +9,7 @@
   --spacing: 1rem;
   --radius: 6px;
   --transition: 0.3s ease;
-  --notice-height: 0px;
+ main
 }
 
 /* ====== Base ====== */
@@ -93,9 +93,11 @@ p, li {font-size: 1rem;}
   text-align: center;
   padding: 0.5rem;
   font-weight: 600;
+
   position: sticky;
   top: 0;
   z-index: 1100;
+ main
 }
 
 /* ====== Hero ====== */
